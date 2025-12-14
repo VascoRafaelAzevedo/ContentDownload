@@ -1,0 +1,12 @@
+FROM golang:1.22-alpine
+
+RUN apk add --no-cache aria2
+
+WORKDIR /app
+
+COPY main.go .
+RUN go build -o torrent-api
+
+EXPOSE 8080
+
+CMD ["./torrent-api"]
